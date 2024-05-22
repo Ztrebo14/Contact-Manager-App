@@ -1,0 +1,14 @@
+.contactlist-container {
+    background-color: grey;
+    margin-left: 10px;
+    margin-right: 0;
+    padding: 10px 10px 10px 10px;
+}
+
+.contacts {
+    margin: 10px 0 10px 10px;
+}
+
+.contacts li {
+    list-style-type: none;
+}
