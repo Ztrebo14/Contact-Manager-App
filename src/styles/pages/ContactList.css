@@ -1,14 +1,22 @@
 .contactlist-container {
     background-color: grey;
+    border-radius: 10px 10px 10px 10px;
+    width: 800px;
     margin-left: 10px;
-    margin-right: 0;
     padding: 10px 10px 10px 10px;
 }
 
 .contacts {
-    margin: 10px 0 10px 10px;
+    margin: 10px 10px 10px 10px;
 }
 
 .contacts li {
     list-style-type: none;
+}
+
+.contacts ul {
+    background-image: linear-gradient( pink, violet);
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom: 10px;
 }

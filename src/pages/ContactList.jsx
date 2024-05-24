@@ -13,10 +13,36 @@ const ContactList = () => {
         <div className="contacts">
           { users.map((user) => (
             <ul key={user.id}>
-              <li>{user.firstName}</li>
-              <li>{user.lastName}</li>
-              <li>{user.email}</li>
-              <li>{user.phoneNum}</li>
+              <li>
+                <p>First Name:
+                  <i>
+                    {user.firstName}
+                  </i>
+                </p>
+              </li>
+              <li>
+                <p>Last Name:
+                  <i>
+                    {user.lastName}
+                  </i>
+                </p>
+              </li>
+              <li>
+                <p>Email Address:
+                  <i>
+                    {user.email}
+                  </i>
+                </p>
+              </li>
+              <li>
+                <p>Phone Number:
+                  <i>
+                    {user.phoneNum}
+                  </i>
+                </p>
+              </li>
+              <button>Edit Info</button>
+              <button>Delete</button>
             </ul>
           ))}
         </div>
