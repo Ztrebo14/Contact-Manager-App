@@ -1,8 +1,11 @@
 import React from 'react'
 
 const EditBtn = () => {
+    
   return (
-    <div>EditBtn</div>
+    <>
+        <button>Edit Info</button>
+    </>
   )
 }
 

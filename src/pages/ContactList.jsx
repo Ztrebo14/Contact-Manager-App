@@ -1,9 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../styles/pages/ContactList.css'
 import ContactContext from '../context/ContactContext'
+import { useNavigate } from 'react-router-dom'
 
 const ContactList = () => {
   const { users, setUsers } = useContext(ContactContext)
+  const navigate = useNavigate()
+
+
+
+  const handleEditContact = (userId) => {
+    navigate(`edit-contact/${userId}`)
+  }
+
   return (
     <>
     <div className="contactlist-container">
@@ -12,18 +21,18 @@ const ContactList = () => {
         <>
         <div className="contacts">
           { users.map((user) => (
-            <ul key={user.id}>
+            <ul key={user.id}>  
               <li>
-                <p>First Name:
+                <p>Full Name:
                   <i>
-                    {user.firstName}
+                    {user.name}
                   </i>
                 </p>
               </li>
               <li>
-                <p>Last Name:
+                <p>Username:
                   <i>
-                    {user.lastName}
+                    {user.username}
                   </i>
                 </p>
               </li>
@@ -37,11 +46,11 @@ const ContactList = () => {
               <li>
                 <p>Phone Number:
                   <i>
-                    {user.phoneNum}
+                    {user.phone}
                   </i>
                 </p>
               </li>
-              <button>Edit Info</button>
+              <button onClick={() => handleEditContact(user.id)}>Edit Info</button>
               <button>Delete</button>
             </ul>
           ))}

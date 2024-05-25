@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import '../styles/pages/AddContact.css'
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import { v4 as uuidv4 } from 'uuid'
 import ContactContext from '../context/ContactContext'
 
 const AddContact = () => {
@@ -14,43 +15,46 @@ const AddContact = () => {
             <div className="form-container">
                 <Formik
                     initialValues={{
-                        firstName: '',
-                        lastName: '',
+                        id: users.length + 1,
+                        name: '',
+                        username: '',
                         email: '',
-                        phoneNum: ''
+                        phone: ''
                     }}
                     validationSchema={ Yup.object({
-                        firstName: Yup.string().max(15, 'Must be 15 charcters or less')
+                        name: Yup.string().max(25, 'Must be 25 charcters or less')
                         .required('Required'),
-                        lastName: Yup.string().max(15, 'Must be 12 charcters or less')
+                        username: Yup.string().max(15, 'Must be 12 charcters or less')
                         .required('Required'),
                         email: Yup.string().email('Invalid email address').required('Required'),
-                        phoneNum: Yup.string().max(11, 'Must be 11 digits').required('Require')
+                        phone: Yup.string().max(11, 'Must be 11 digits').required('Require')
                     })}
-                    onSubmit={(values, setSubmitting) => {
+                    onSubmit={(values, { setSubmitting, resetForm }) => {
                         setTimeout(
                             alert(JSON.stringify(values, null, 2)),
                             setUsers(([...users, values])),
                             setSubmitting(false)
                         , 4000)
+                        resetForm()
+                        
                     }}
                 >
                 <Form>
-                    <label>First name: </label>
-                    <Field name='firstName' type='text' />
-                    <ErrorMessage name='firstName'/>
+                    <label>Full name: </label>
+                    <Field name='name' type='text' />
+                    <ErrorMessage name='name'/>
                     <br />
-                    <label>Last name:</label>
-                    <Field name='lastName' type='text' />
-                    <ErrorMessage name='lastName'/>
+                    <label>Username:</label>
+                    <Field name='username' type='text' />
+                    <ErrorMessage name='username'/>
                     <br />
                     <label>Email :</label>
                     <Field name='email' type='email' />
                     <ErrorMessage name='email'/>
                     <br />
                     <label>Phone Number: </label>
-                    <Field name='phoneNum' type='text' />
-                    <ErrorMessage name='phoneNum'/>
+                    <Field name='phone' type='text' />
+                    <ErrorMessage name='phone'/>
                     <br />
                     <button>Submit</button>
                 </Form>
